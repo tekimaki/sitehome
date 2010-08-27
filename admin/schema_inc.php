@@ -1,4 +1,22 @@
 <?php
+
+global $gBitSystem;
+
+$gBitSystem->registerPackageInfo( SITEHOME_PKG_NAME, array(
+	'description' => "SiteHome package for managing your site's front page.",
+	'license' => '<a href="http://www.gnu.org/licenses/licenses.html#LGPL">LGPL</a>',
+) );
+
+// Requirements
+$gBitSystem->registerRequirements( SITEHOME_PKG_NAME, array(
+	'liberty' => array( 'min' => '2.1.4' ),
+));
+
+
+// Install process
+global $gBitInstaller;
+if( is_object( $gBitInstaller ) ){
+
 $tables = array(
 	'sitehomes' => "
 		sitehome_id I4 PRIMARY,
@@ -7,16 +25,9 @@ $tables = array(
 	",
 );
 
-global $gBitInstaller;
-
 foreach( array_keys( $tables ) AS $tableName ) {
 	$gBitInstaller->registerSchemaTable( SITEHOME_PKG_NAME, $tableName, $tables[$tableName] );
 }
-
-$gBitInstaller->registerPackageInfo( SITEHOME_PKG_NAME, array(
-	'description' => "SiteHome package for managing your site's front page.",
-	'license' => '<a href="http://www.gnu.org/licenses/licenses.html#LGPL">LGPL</a>',
-) );
 
 // ### Indexes
 $indices = array(
@@ -55,7 +66,4 @@ $gBitInstaller->registerPreferences( SITEHOME_PKG_NAME, array(
 	array( SITEHOME_PKG_NAME, 'sitehome_home_sitehome', ''),
 ) );
 
-// Requirements
-$gBitInstaller->registerRequirements( SITEHOME_PKG_NAME, array(
-	'liberty' => array( 'min' => '2.1.4' ),
-));
+}
