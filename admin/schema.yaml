@@ -1,0 +1,52 @@
+---
+sitehome: 
+  homeable: false
+  required: false
+  tables: 
+    sitehomes: |
+      
+      sitehome_id I4 PRIMARY,
+      content_id I4 NOTNULL,
+      description C(160)
+      
+  indexes: 
+    bit_sitehomes_sitehome_id_idx: 
+      table: sitehomes
+      cols: sitehome_id
+      opts: 
+  sequences: 
+    sitehomes_sitehome_id_seq: 
+      start: 1
+  defaults: [ ]
+  permissions: 
+    p_sitehome_admin: 
+      description: Can admin sitehome
+      level: admin
+    p_sitehome_create: 
+      description: Can create a sitehome
+      level: registered
+    p_sitehome_update: 
+      description: Can edit any sitehome
+      level: editors
+    p_sitehome_read: 
+      description: Can read sitehome
+      level: basic
+  preferences: 
+    sitehome_default_ordering: sitehome_id_desc
+    sitehome_list_sitehome_id: y
+    sitehome_list_title: y
+    sitehome_list_description: y
+    sitehome_list_sitehomes: y
+    sitehome_display_title: y
+    sitehome_display_description: y
+    sitehome_display_date: y
+    sitehome_home_sitehome: 
+  requirements: 
+    liberty: 
+      min: 2.1.4
+  version: 0.0.0
+  description: >
+    SiteHome package for managing your
+    site's front page.
+  license: 
+    html: '<a href="http://www.gnu.org/licenses/licenses.html#LGPL">LGPL</a>'
