@@ -50,3 +50,5 @@ sitehome:
     site's front page.
   license: 
     html: '<a href="http://www.gnu.org/licenses/licenses.html#LGPL">LGPL</a>'
+  contenttypes:
+    BitSiteHome: BitSiteHome.php
